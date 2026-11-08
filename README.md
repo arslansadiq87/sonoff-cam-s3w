@@ -26,6 +26,15 @@ Connect each motor to its ULN2003 board and connect the board input pins to the 
 
 The motors have no end-stop sensors. Homing uses timed step counts and assumes the mechanism can reach its mechanical home without damage. Keep the mechanism clear during calibration and supervise initial movements. Software limits apply after calibration; they are not a substitute for physical end stops.
 
+### Wiring diagrams
+
+The `schematics/` folder contains wiring references for the controller and its USB circuit:
+
+- [ESP32-C6, stepper drivers, motors and relay wiring](schematics/circuit-studio-3840x2160.png)
+- [ESP32-S3 USB circuit schematic](schematics/esp32-s3-usb-circuit-schematic.png)
+
+The USB schematic is for an ESP32-S3 circuit; the firmware build target described above is ESP32-C6. Check the board and pin labels on the diagrams against your hardware before wiring.
+
 ## Configure credentials
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/) with the PlatformIO IDE extension, or install PlatformIO Core.
