@@ -1,0 +1,54 @@
+﻿# Home Assistant package for the ESP32 PTZ controller.
+# Copy this file to /config/packages/ptz_camera.yaml and replace the example ESP32 IP.
+rest:
+  - resource: http://192.168.1.50/api/v1/status
+    scan_interval: 5
+    sensor:
+      - name: PTZ Camera Controller
+        value_template: "{{ value_json.calibration }}"
+        json_attributes:
+          - panState
+          - panPosition
+          - tiltState
+          - tiltPosition
+          - relayOn
+          - ptzActive
+          - message
+
+rest_command:
+  ptz_light_on:
+    url: http://192.168.1.50/api/v1/relay
+    method: POST
+    content_type: application/x-www-form-urlencoded
+    payload: "state=on"
+  ptz_light_off:
+    url: http://192.168.1.50/api/v1/relay
+    method: POST
+    content_type: application/x-www-form-urlencoded
+    payload: "state=off"
+  ptz_calibrate:
+    url: http://192.168.1.50/api/v1/calibrate
+    method: POST
+  ptz_home:
+    url: http://192.168.1.50/api/v1/preset/go
+    method: POST
+    content_type: application/x-www-form-urlencoded
+    payload: "id=0"
+  ptz_save_home:
+    url: http://192.168.1.50/api/v1/preset/save
+    method: POST
+    content_type: application/x-www-form-urlencoded
+    payload: "id=0"
+  ptz_preset_1:
+    url: http://192.168.1.50/api/v1/preset/go
+    method: POST
+    content_type: application/x-www-form-urlencoded
+    payload: "id=1"
+  ptz_pan_right:
+    url: http://192.168.1.50/api/v1/move
+    method: POST
+    content_type: application/x-www-form-urlencoded
+    payload: "axis=pan&dir=A&steps=32"
+
+
+

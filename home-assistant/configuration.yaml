@@ -1,0 +1,5 @@
+﻿# Add this under the existing `homeassistant:` section in your Home Assistant
+# configuration.yaml. If that section already exists, merge the `packages:`
+# line into it instead of adding a second `homeassistant:` key.
+homeassistant:
+  packages: !include_dir_named packages

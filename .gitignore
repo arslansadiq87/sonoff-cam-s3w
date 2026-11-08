@@ -1,0 +1,15 @@
+# Local credentials and machine-specific config
+src/secrets.h
+.vscode/
+
+# PlatformIO generated files
+.pio/
+.piolibdeps/
+
+# Historical snapshots may contain credentials or private network data
+checkpoints/
+
+# Common editor/OS files
+.DS_Store
+Thumbs.db
+desktop.ini

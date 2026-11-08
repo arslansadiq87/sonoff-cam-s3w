@@ -1,0 +1,135 @@
+﻿# Lovelace card: live Sonoff camera plus ONVIF PTZ controls.
+# Paste into Dashboard > Edit dashboard > Add card > Manual.
+# Replace camera.sonoff_cam_s3w with the ONVIF camera entity ID in your HA.
+type: vertical-stack
+cards:
+  - type: picture-entity
+    entity: camera.sonoff_cam_s3w
+    camera_view: live
+    show_name: true
+    show_state: false
+
+  - type: grid
+    columns: 3
+    square: true
+    cards:
+      - type: button
+        name: Up left
+        icon: mdi:arrow-top-left
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            pan: LEFT
+            tilt: UP
+            move_mode: RelativeMove
+            distance: 0.15
+            speed: 0.5
+      - type: button
+        name: Tilt up
+        icon: mdi:arrow-up
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            tilt: UP
+            move_mode: RelativeMove
+            distance: 0.15
+            speed: 0.5
+      - type: button
+        name: Up right
+        icon: mdi:arrow-top-right
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            pan: RIGHT
+            tilt: UP
+            move_mode: RelativeMove
+            distance: 0.15
+            speed: 0.5
+
+      - type: button
+        name: Pan left
+        icon: mdi:arrow-left
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            pan: LEFT
+            move_mode: RelativeMove
+            distance: 0.15
+            speed: 0.5
+      - type: button
+        name: Stop
+        icon: mdi:stop
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            move_mode: Stop
+      - type: button
+        name: Pan right
+        icon: mdi:arrow-right
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            pan: RIGHT
+            move_mode: RelativeMove
+            distance: 0.15
+            speed: 0.5
+
+      - type: button
+        name: Down left
+        icon: mdi:arrow-bottom-left
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            pan: LEFT
+            tilt: DOWN
+            move_mode: RelativeMove
+            distance: 0.15
+            speed: 0.5
+      - type: button
+        name: Tilt down
+        icon: mdi:arrow-down
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            tilt: DOWN
+            move_mode: RelativeMove
+            distance: 0.15
+            speed: 0.5
+      - type: button
+        name: Down right
+        icon: mdi:arrow-bottom-right
+        tap_action:
+          action: perform-action
+          perform_action: onvif.ptz
+          target:
+            entity_id: camera.sonoff_cam_s3w
+          data:
+            pan: RIGHT
+            tilt: DOWN
+            move_mode: RelativeMove
+            distance: 0.15
+            speed: 0.5
